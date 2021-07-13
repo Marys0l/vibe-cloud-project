@@ -8,3 +8,8 @@ Our application will use two APIs to generate a word cloud. The first API will r
 As a person with an interest in dining in my area
 I want to find a restaurant whose vibe and cuisine suit my interests
 So that I can decide if I would like to go.
+
+## Resources
+
+https://materializecss.com/
+
