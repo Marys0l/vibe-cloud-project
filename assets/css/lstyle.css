@@ -53,7 +53,7 @@ h2 {
 .button {
     background-color: #E37003;
     border: none;
-    color: white;
+    color: rgb(225, 231, 220);
     padding: 20px 20px;
     text-align: center;
     text-decoration: none;
@@ -73,6 +73,13 @@ h2 {
 .centered img {
   width: 150px;
   border-radius: 0%;
+}
+/* link to search page*/
+a {
+  color: rgb(247, 248, 247);
+}
+a:hover {
+  color: rgb(2, 17, 29);
 }
 /* ignore this still refactoring */
 @media screen and (max-width: 768px) {
