@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  body {
+    color:#333236;
+    background-color: #A3E2FF;
+  }
+
+header {
+    padding: 6px 50px;
+    background-color: #424242;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    } 
+
+
+header h1 {
+    font-weight: lighter;
+    font-size: 25px;
+    color: rgb(199, 197, 199);
+    margin: 0;
+  } 
+
+h2 {
+    font-size: 50px;
+    position: static;
+    left: 50px;
+    font-weight: bolder;
+}
+
+.split {
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.left {
+  left: 0;
+  height: 100vh;
+}
+
+.right {
+  right: 0;
+  height: 100vh;
+  background-color: #A3E2FF;
+}
+.button {
+    background-color: #E37003;
+    border: none;
+    color: white;
+    padding: 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 12px 56px;
+    cursor: pointer;
+  }
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-weight: 500;
+ 
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 0%;
+}
+/* ignore this still refactoring */
+@media screen and (max-width: 768px) {
+    header {
+      padding-bottom: 10px;
+      justify-content: center;
+    }
+
+    header h1 {
+        font-weight: lighter;
+        font-size: 25px;
+        color: rgb(199, 197, 199);
+        margin: 0;
+      } 
+    
+    h2 {
+        font-size: 50px;
+        position: static;
+        left: 50px;
+        font-weight: bolder;
+    }
+    
+    .split {
+      position: relative;
+      height: 100%;
+      z-index: 1;
+      top: 0;
+    }
+    
+    .left {
+      display: none;
+    }
+    
+    .right {
+      background-color: #A3E2FF;
+    }
+    .button {
+        background-color: #E37003;
+        border: none;
+        color: white;
+        padding: 20px 50px;
+        text-align: center;
+        text-decoration: none;
+        display: center;
+        font-size: 16px;
+        margin: 50px 50px;
+        cursor: pointer;
+      }
+    
+    .centered {
+      position: static;
+      font-weight: 50;
+     
+    }
+
+}
+    
