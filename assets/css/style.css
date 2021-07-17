@@ -1,0 +1,27 @@
+/* 
+ * SEARCH PAGE
+ */
+
+/* style page */
+body {
+  background-color: #a3e2ff;
+}
+
+/* style search box */
+#zip-code-text {
+  background-color: #fafafa;
+}
+
+/* style search button */
+#search-button {
+  background-color: #4caf50;
+  font-size: 18px;
+}
+
+/* style search instructions */
+h1 {
+  font-size: 2rem;
+  color: #424242;
+  font-weight: 500;
+  line-height: normal;
+}

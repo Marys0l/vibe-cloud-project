@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width initial-scale=1.0" />
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-        <link rel ="stylesheet" href="./assets/css/style.css" />
-        <title>Vibe Cloud</title>
-    </head>
-    <body>
-        <header>
-            <h1>Vibe Cloud</h1>
-        </header>  
-        <section class="split left">
-            <div class="centered">
-              <img src="./assets/images/hero.jpeg" alt="cloud like lines">
-            </div>
-          <div class="split right">
-            <div class="centered">
-                <h2>Welcome to Vibe Cloud</h2>
-            </div>
-        </section>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel ="stylesheet" href="./assets/css/style.css" />
+    <title>Vibe Cloud</title>
+  </head>
+  <body>
+    <!-- top panel contains search instructions and search widgets -->
+    <section id="top-panel">
+      <div id="search-input-area">
+        <!-- instructions -->
+        <h1>Enter your zip code to find restaurant vibes in your area ...</h1>
+        <!-- zip code text -->
+        <input type="text" id="zip-code-text" name="zip-code-text" minlength="5" maxlength="5" required>
+        <!-- search button --> 
+        <a id="search-button" name="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Search</a>
+      </div>
+    </section>
+    <!-- bottom panel contains search results and word cloud -->
+    <section id="bottom-panel">
+      <!-- container for search results -->   
+      <div>
+        <!-- placeholder result 1 -->
+        <div class="placeholder-card">search result 1</div>
+        <!-- placeholder result 2 -->
+        <div class="placeholder-card">search result 2</div>
+        <!-- placeholder result 3 -->
+        <div class="placeholder-card">search result 3</div>
+      </div>
+      <!-- div container for word cloud -->
+      <div id="word-cloud-area">
+        <!-- word cloud image with placeholder -->
+        <img class="placeholder-image" src="https://wordcloudapi.com/word_cloud.png" width="100%" height="100%">
+      </div>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="./assets/js/script.js"></script> 
-</body>
+    </body>
 </html>
