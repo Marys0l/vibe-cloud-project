@@ -1,21 +1,35 @@
 /* 
- * SEARCH PAGE
+ * GENERAL
  */
 
-/* style page */
+/* set page background to light blue */
+/* add scrollbar if page content overflows  */
 body {
   background-color: #a3e2ff;
+  overflow: auto;
 }
+
+/* make materialize container wider than default */
+.container {
+  width: 95%;
+}
+
+/* 
+ * TOP PANEL
+ */
 
 /* style search box */
 #zip-code-text {
   background-color: #fafafa;
+  width: 130px;
+  margin-right: 10px;
 }
 
 /* style search button */
 #search-button {
   background-color: #4caf50;
   font-size: 18px;
+  margin-bottom: 4px;
 }
 
 /* style search instructions */
@@ -24,4 +38,30 @@ h1 {
   color: #424242;
   font-weight: 500;
   line-height: normal;
+}
+
+/* 
+ * BOTTOM PANEL
+ */
+
+ /* make bottom panel flex container */
+ /* put children in a row and align center */
+#bottom-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ }
+
+/* change flex direction to column on small screens */
+@media screen and (max-width: 768px) {
+  #bottom-panel {
+    flex-direction: column;
+  }
+}
+
+/* increase font size on medium screens */
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
 }

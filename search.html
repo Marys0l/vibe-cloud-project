@@ -8,30 +8,36 @@
     <link rel ="stylesheet" href="./assets/css/style.css" />
     <title>Vibe Cloud</title>
   </head>
-  <body>
+  <!-- style body as materialize container -->
+  <body class="container">
     <!-- top panel contains search instructions and search widgets -->
     <section id="top-panel">
-      <div id="search-input-area">
-        <!-- instructions -->
+      <div id="search-area">
+        <!-- instructions for end user -->
         <h1>Enter your zip code to find restaurant vibes in your area ...</h1>
-        <!-- zip code text -->
-        <input type="text" id="zip-code-text" name="zip-code-text" minlength="5" maxlength="5" required>
-        <!-- search button --> 
-        <a id="search-button" name="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Search</a>
+        <!-- put search widgets in materialize row -->
+        <div id="search-input-row" class="row">
+            <!-- require zip code text restrict input to 5 characters -->
+            <input type="text" id="zip-code-text" name="zip-code-text" minlength="5" maxlength="5" required>
+            <!-- search button with materialize styling --> 
+            <a id="search-button" name="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Search</a>
+        </div>
       </div>
     </section>
     <!-- bottom panel contains search results map and word cloud -->
     <section id="bottom-panel">
       <!-- container for search results map -->   
       <div class="results-map-area">
-        <img class="placeholder-image responsive-img" src="https://billypenn.com/wp-content/uploads/2020/11/pretzel-map-768x431.jpg">
+        <!-- add realistic placeholder image, make responsive with materialize styling -->
+        <img class="placeholder-image responsive-img z-depth-3" src="https://billypenn.com/wp-content/uploads/2020/11/pretzel-map-768x431.jpg">
       </div>
-      <!-- div container for word cloud -->
+      <!-- container for word cloud -->
       <div id="word-cloud-area">
+        <!-- add realistic placeholder image, make responsive with materialize styling -->
         <img class="placeholder-image responsive-img" src="https://wordcloudapi.com/word_cloud.png">
       </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="./assets/js/script.js"></script> 
-    </body>
+  </body>
 </html>
