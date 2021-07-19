@@ -15,6 +15,25 @@ body {
 }
 
 /* 
+ * HEADER
+ */
+
+/* make header background dark gray */
+header {
+  padding: 6px 50px;
+  background-color: #424242;
+  text-align: center;
+}
+
+/* make header text gray and lightweight */
+header h1 {
+  font-weight: lighter;
+  font-size: 25px;
+  color: rgb(199, 197, 199);
+  margin: 0;
+}
+
+/* 
  * TOP PANEL
  */
 
