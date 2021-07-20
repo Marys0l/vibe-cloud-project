@@ -142,7 +142,7 @@ function addPlaces(places, map) {
       });
 
       marker.addListener("click", () => {
-        map.setCenter(place.geometry.location);
+        //map.setCenter(place.geometry.location);
         console.log("clicked marker", place);
         console.time("time");
         placeDetails(place, map);
@@ -153,9 +153,9 @@ function addPlaces(places, map) {
 }
 
 
-function placeDetails(place) {
+function placeDetails(place, map) {
   console.log("place detials function", place);
-  const service = new google.maps.places.PlacesService(map);
+  service = new google.maps.places.PlacesService(map);
   const request = {
     placeId: place.place_id,
     fields: ['name', 'formatted_address', "place_id", 'geometry', 'reviews']

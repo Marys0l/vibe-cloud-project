@@ -60,8 +60,11 @@ h1 {
 }
 
 #map {
-  flex-basis: 0;
-  flex-grow: 4;
+  overflow:hidden;
+  position:relative;
+  padding-bottom:50%;
+  height: 100%;
+
 }
 
 /* 
