@@ -34,16 +34,22 @@
         <!-- container for search results map -->   
         <div class="results-map-area">
           <!-- add realistic placeholder image, make responsive with materialize styling -->
-          <img class="placeholder-image responsive-img z-depth-3" src="https://billypenn.com/wp-content/uploads/2020/11/pretzel-map-768x431.jpg">
+            <div class="responsive-img z-depth-3" id="map"></div>
+              <div id="sidebar">
+                <h2>Results</h2>
+                <ul id="places"></ul>
+                <button id="more">Load more results</button>
+              <!--   <img class="placeholder-image responsive-img z-depth-3" src="https://billypenn.com/wp-content/uploads/2020/11/pretzel-map-768x431.jpg"> -->
         </div>
         <!-- container for word cloud -->
         <div id="word-cloud-area">
           <!-- add realistic placeholder image, make responsive with materialize styling -->
-          <img class="placeholder-image responsive-img" src="https://wordcloudapi.com/word_cloud.png">
+          <img class="placeholder-image responsive-img" id="wordcloudImg" src="https://wordcloudapi.com/word_cloud.png">
         </div>
       </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&v=weekly&channel=2" async defer ></script>
     <script src="./assets/js/script.js"></script> 
   </body>
 </html>

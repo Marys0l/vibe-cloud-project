@@ -59,6 +59,14 @@ h1 {
   line-height: normal;
 }
 
+#map {
+  overflow:hidden;
+  position:relative;
+  padding-bottom:50%;
+  height: 100%;
+
+}
+
 /* 
  * BOTTOM PANEL
  */
