@@ -56,9 +56,6 @@ function geocodeZip(zipCodeInput, map) {
 }
 
 function initMap() { //call back function 
-  //console.log("userLat in initmap)", userLat)
-  //console.log("userLong in initmap)", userLong)
-  //console.log("userlocation in initmap", userLocation)
   //document.querySelectorAll("#placeholder-image").attr('')
   //geocoder = new google.maps.Geocoder();
   bounds = new google.maps.LatLngBounds();
@@ -67,7 +64,7 @@ function initMap() { //call back function
 
   const map = new google.maps.Map(document.getElementById("map"), {
     center: userLocation,
-    zoom: 16,
+    zoom: 15,
     mapId: "8d193001f940fde3",
   });
   bounds.extend(userLocation);
@@ -168,6 +165,10 @@ function placeDetails(place, map) { // getDetails from google library
       reviewtextblock = reviewtextblock + " " + placeResult.reviews[x].text;
       //reviewsArray.push(placeResult.reviews[x].text);
     }
+    console.log("reviews block before strip", reviewtextblock);
+    reviewtextblock = reviewtextblock.replace(/[0-9]/g, '') // remove any numbers
+    reviewtextblock = reviewtextblock.split('.').join(""); // remove periods.
+    console.log("review block stripped", reviewtextblock);
     wordCloud(reviewtextblock);   // call word cloud api
     console.log("reviewtextblock ", reviewtextblock);
   });
