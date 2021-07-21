@@ -9,7 +9,7 @@ let currentInfoWindow;
 let bounds;
 var time;
 let service;
-var geocoder = new google.maps.Geocoder();
+var geocoder;
 
 
 $("#search-button").on("click", function() //search button pressed
