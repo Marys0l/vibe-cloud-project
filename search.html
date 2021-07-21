@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel ="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Vibe Cloud</title>
   </head>
-  <body >
+  <body>
     <!-- header with application name -->
     <header>
       <h1>Vibe Cloud</h1>
@@ -22,34 +28,55 @@
           <h1>Enter your zip code to find restaurant vibes in your area ...</h1>
           <!-- put search widgets in materialize row -->
           <div id="search-input-row" class="row">
-              <!-- require zip code text restrict input to 5 characters -->
-              <input type="text" id="zip-code-text" name="zip-code-text" minlength="5" maxlength="5" required>
-              <!-- search button with materialize styling --> 
-              <a id="search-button" name="search-button" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Search</a>
+            <!-- require zip code text restrict input to 5 characters -->
+            <input
+              type="text"
+              id="zip-code-text"
+              name="zip-code-text"
+              minlength="5"
+              maxlength="5"
+              required
+            />
+            <!-- search button with materialize styling -->
+            <a
+              id="search-button"
+              name="search-button"
+              class="waves-effect waves-light btn"
+              ><i class="material-icons right">cloud</i>Search</a
+            >
           </div>
         </div>
       </section>
       <!-- bottom panel contains search results map and word cloud -->
       <section id="bottom-panel">
-        <!-- container for search results map -->   
-        <div class="results-map-area">
+        <!-- container for search results map -->
+        <div class="results-map-area" style="width: 800px;">
           <!-- add realistic placeholder image, make responsive with materialize styling -->
-            <div class="responsive-img z-depth-3" id="map"></div>
-              <div id="sidebar">
-                <h2>Results</h2>
-                <ul id="places"></ul>
-                <button id="more">Load more results</button>
-              <!--   <img class="placeholder-image responsive-img z-depth-3" src="https://billypenn.com/wp-content/uploads/2020/11/pretzel-map-768x431.jpg"> -->
+          <div class="responsive-img z-depth-3" id="map"></div>
+          <div id="sidebar">
+            <h2>Results</h2>
+            <ul id="places"></ul>
+            <button id="more">Load more results</button>
+          </div>
+          <!--   <img class="placeholder-image responsive-img z-depth-3" src="https://billypenn.com/wp-content/uploads/2020/11/pretzel-map-768x431.jpg"> -->
         </div>
         <!-- container for word cloud -->
         <div id="word-cloud-area">
           <!-- add realistic placeholder image, make responsive with materialize styling -->
-          <img class="placeholder-image responsive-img" id="wordcloudImg" src="https://wordcloudapi.com/word_cloud.png">
+          <img
+            class="placeholder-image responsive-img"
+            id="wordcloudImg"
+            src="https://wordcloudapi.com/word_cloud.png"
+          />
         </div>
       </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&v=weekly&channel=2" async defer ></script>
-    <script src="./assets/js/script.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&v=weekly&channel=2"
+      async
+      defer
+    ></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

@@ -196,7 +196,7 @@ function wordCloud(reviewtextblock) { // word cloud api call
       },
       body: JSON.stringify({
         text: reviewtextblock,
-        scale: .5,
+        scale: 1,
         width: 1200,
         height: 800,
         colors: ["#375E97", "#FB6542", "#FFBB00", "#3F681C"],
