@@ -124,7 +124,7 @@ function placeDetails(place, map) { // getDetails from google library
   service.getDetails(request, (placeResult, status) => {
     console.log("place", place);
     console.log("placeResult", placeResult);
-    //carousel(placeResult, place);
+    carousel(placeResult);
     reviewtextblock = "";
     for (var x = 0; x < 5; x++) {
       console.log("placeResult.reviews", placeResult.reviews[x].text);
@@ -149,17 +149,19 @@ function showDetails(place, marker) { //info window popup on marker clicks
   currentInfoWindow.close();
   currentInfoWindow = placeInfowindow;
 }
-/*
-function carousel(placeResult, place) {
+
+function carousel(placeResult) {
+   /*
   var carouselItems = document.querySelectorAll(".carousel-item");
   console.log("carouselItems", carouselItems)
   for (var i = 0; i < carouselItems.length; i++) {
       console.log("carouselItem", i , carouselItems[i]);
       console.log("placeResult.photos[i]", placeResult.photos[i])
       carouselItems[i].src = placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250});
-      $('.carousel-item').attr('src', placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250}));
+      //$('.carousel-item').attr('src', placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250}));
       console.log("placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250});", placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250}));
     }
+
 
   var carousel = document.querySelector(".carousel");
   var hotDogContainer = document.createElement("a");
@@ -170,10 +172,32 @@ function carousel(placeResult, place) {
   hotDogContainer.append(hotDogImage);
   carousel.append(hotDogContainer);
   M.Carousel.init(carousel, {});
+ */
+  var carousel = document.querySelector(".carousel");
+  var instance = M.Carousel.getInstance(carousel);
+  console.log("instance", instance);
+
+  for(var i =0; i < placeResult.photos.length; i++)
+  {
+    
+      var carouselItemContainer = document.createElement("a");
+      carouselItemContainer.classList.add('carousel-item');
+      carouselItemContainer.id = i;
+      carouselItemContainer.href = ("#" + i);
+      console.log("carouselItemContainer", carouselItemContainer);
+      var carouselItemImage = document.createElement("img");
+      carouselItemImage.src = placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250});
+      console.log("carouselItemImage", carouselItemImage);
+      carouselItemContainer.append(carouselItemImage);
+      carousel.append(carouselItemContainer);
+      console.log("carousel", carousel);
+  }
+  M.Carousel.init(carousel, {});
+
 
   
 }
-*/
+
 
 function wordCloud() { // word cloud api call
   fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
