@@ -124,7 +124,7 @@ function placeDetails(place, map) { // getDetails from google library
   service.getDetails(request, (placeResult, status) => {
     console.log("place", place);
     console.log("placeResult", placeResult);
-    carousel(placeResult, place);
+    //carousel(placeResult, place);
     reviewtextblock = "";
     for (var x = 0; x < 5; x++) {
       console.log("placeResult.reviews", placeResult.reviews[x].text);
@@ -149,7 +149,7 @@ function showDetails(place, marker) { //info window popup on marker clicks
   currentInfoWindow.close();
   currentInfoWindow = placeInfowindow;
 }
-
+/*
 function carousel(placeResult, place) {
   var carouselItems = document.querySelectorAll(".carousel-item");
   console.log("carouselItems", carouselItems)
@@ -173,6 +173,7 @@ function carousel(placeResult, place) {
 
   
 }
+*/
 
 function wordCloud() { // word cloud api call
   fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
