@@ -10,6 +10,7 @@ let bounds;
 var time;
 let service;
 var geocoder;
+let placeResult;
 
 
 $("#search-button").on("click", function() //search button pressed
@@ -19,7 +20,6 @@ $("#search-button").on("click", function() //search button pressed
     validateZipCode(zipCodeInput, zipCodeValid); //calls  validateZipCode function
     geocodeZip(zipCodeInput, map);
 
-    //initMap(userLocation);
   })
 
 function validateZipCode(zipCodeInput) {
@@ -55,31 +55,19 @@ function geocodeZip(zipCodeInput, map) {
     );
 }
 
-function initMap() { //call back function 
-  //document.querySelectorAll("#placeholder-image").attr('')
-  //geocoder = new google.maps.Geocoder();
+function initMap() { //normaly the call back function 
   bounds = new google.maps.LatLngBounds();
   infoWindow = new google.maps.InfoWindow;
   currentInfoWindow = infoWindow;
 
   const map = new google.maps.Map(document.getElementById("map"), {
     center: userLocation,
-    zoom: 15,
+    zoom: 16,
     mapId: "8d193001f940fde3",
+    mapTypeControl: false,
   });
   bounds.extend(userLocation);
   service = new google.maps.places.PlacesService(map);
-  let getNextPage;
-  const moreButton = document.getElementById("more");
-
-  moreButton.onclick = function() {
-    moreButton.disabled = true;
-
-    if (getNextPage) {
-      getNextPage();
-    }
-
-  };
 
   service.nearbySearch( // Perform a nearby search using google Places Library
     {
@@ -92,20 +80,12 @@ function initMap() { //call back function
 
       addPlaces(results, map);
       console.log("results", results);
-      moreButton.disabled = !pagination || !pagination.hasNextPage;
-
-      if (pagination && pagination.hasNextPage) {
-        getNextPage = () => {
-          pagination.nextPage();           // Note: nextPage will call the same handler function as the initial call
-        };
-      }
     }
 
   );
 }
 
-function addPlaces(places, map) {   // add markers to map, add to list, listeners for clicks
-  const placesList = document.getElementById("places");
+function addPlaces(places, map) {   // add markers to map, listeners for clicks
   const infowindow = new google.maps.InfoWindow();
   for (const place of places) {
     if (place.geometry && place.geometry.location) {
@@ -123,23 +103,11 @@ function addPlaces(places, map) {   // add markers to map, add to list, listener
         position: place.geometry.location,
       });
 
-      const li = document.createElement("li");
-      li.textContent = place.name;
-      placesList.appendChild(li);
-
-      li.addEventListener("click", () => {
-        map.setCenter(place.geometry.location);
-        showDetails(place, marker);
-        bounds.extend(place.geometry.location);
-        console.log("clicked place", place);
-        placeDetails(place, map);
-      });
-
       marker.addListener("click", () => {
         bounds.extend(place.geometry.location);
         showDetails(place, marker);
-        console.log("clicked marker", place);
-        console.time();
+        //console.log("clicked marker", place);
+        //console.time();
         placeDetails(place, map);
       });
 
@@ -148,45 +116,66 @@ function addPlaces(places, map) {   // add markers to map, add to list, listener
 }
 
 function placeDetails(place, map) { // getDetails from google library 
-  //console.log("place detials function", place);
   service = new google.maps.places.PlacesService(map);
   const request = {
     placeId: place.place_id,
     fields: ['name', 'formatted_address', "place_id", 'geometry', 'reviews', 'photos']
   };
   service.getDetails(request, (placeResult, status) => {
-    // console.log("status", status)
     console.log("place", place);
     console.log("placeResult", placeResult);
-    //var reviewsArray = [];
+    //carousel(placeResult, place);
     reviewtextblock = "";
     for (var x = 0; x < 5; x++) {
       console.log("placeResult.reviews", placeResult.reviews[x].text);
       reviewtextblock = reviewtextblock + " " + placeResult.reviews[x].text;
-      //reviewsArray.push(placeResult.reviews[x].text);
     }
-    console.log("reviews block before strip", reviewtextblock);
+    console.log(reviewtextblock.length, "reviews block before strip", reviewtextblock);
     reviewtextblock = reviewtextblock.replace(/[0-9]/g, '') // remove any numbers
     reviewtextblock = reviewtextblock.split('.').join(""); // remove periods.
-    console.log("review block stripped", reviewtextblock);
+    console.log(reviewtextblock.length, "review block stripped", reviewtextblock);
     wordCloud(reviewtextblock);   // call word cloud api
-    console.log("reviewtextblock ", reviewtextblock);
   });
 }
 
-function showDetails(place, marker) { //info windows
+function showDetails(place, marker) { //info window popup on marker clicks
   let placeInfowindow = new google.maps.InfoWindow();
   let rating = "None";
   console.log("place", place);
-  if (place.rating) rating = place.rating;
+  if (place.rating) rating = place.rating;    
   placeInfowindow.setContent('<div><strong>' + place.name + '<br>' + place.vicinity +
     '</strong><br>' + 'Rating: ' + rating + '</div>');
   placeInfowindow.open(marker.map, marker);
   currentInfoWindow.close();
   currentInfoWindow = placeInfowindow;
 }
+/*
+function carousel(placeResult, place) {
+  var carouselItems = document.querySelectorAll(".carousel-item");
+  console.log("carouselItems", carouselItems)
+  for (var i = 0; i < carouselItems.length; i++) {
+      console.log("carouselItem", i , carouselItems[i]);
+      console.log("placeResult.photos[i]", placeResult.photos[i])
+      carouselItems[i].src = placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250});
+      $('.carousel-item').attr('src', placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250}));
+      console.log("placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250});", placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250}));
+    }
 
-function wordCloud(reviewtextblock) { // word cloud api call
+  var carousel = document.querySelector(".carousel");
+  var hotDogContainer = document.createElement("a");
+  hotDogContainer.classList.add("carousel-item");
+  hotDogContainer.href = "#";
+  var hotDogImage = document.createElement("img");
+  hotDogImage.src = place.photos[0].getUrl({'maxWidth': 250, 'maxHeight': 250});
+  hotDogContainer.append(hotDogImage);
+  carousel.append(hotDogContainer);
+  M.Carousel.init(carousel, {});
+
+  
+}
+*/
+
+function wordCloud() { // word cloud api call
   fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
       method: "POST",
       headers: {
@@ -198,8 +187,8 @@ function wordCloud(reviewtextblock) { // word cloud api call
       body: JSON.stringify({
         text: reviewtextblock,
         scale: 1,
-        width: 1200,
-        height: 800,
+        width: 640,
+        height: 640,
         colors: ["#375E97", "#FB6542", "#FFBB00", "#3F681C"],
         font: "Tahoma",
         use_stopwords: true,
@@ -216,7 +205,7 @@ function wordCloud(reviewtextblock) { // word cloud api call
       img.src = wordCloud;
       //img.height = 800;
       //img.width = 800;
-      console.timeEnd();
+      //console.timeEnd();
     })
     .catch(err => {
       console.log(err);
@@ -264,7 +253,7 @@ function wordCloud(reviewtextblock)
   */
 
 
-  /*  rewrote this, removed promise.
+  /*  geocodezip function with a working? promise.
 function geocodeZip(zipCodeInput) {
   const geocoder = new google.maps.Geocoder();
   return new Promise(function(resolve, reject) {
