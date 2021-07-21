@@ -2,11 +2,17 @@
  * GENERAL
  */
 
+
 /* set page background to light blue */
 /* add scrollbar if page content overflows  */
+/* add responsive background image */
 body {
   background-color: #a3e2ff;
   overflow: auto;
+  background-image: url("../images/cloud_bkgr_med.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 /* make materialize container wider than default */
