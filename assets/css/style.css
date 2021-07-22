@@ -96,9 +96,14 @@ h1 {
 }
 
 /* change flex direction to column on small screens */
+/* increase body height on small screens */
+/* - this will make background image take full height on small screens */
 @media screen and (max-width: 768px) {
   #bottom-panel {
     flex-direction: column;
+  }
+  body {
+    height: 175vh;
   }
 }
 
