@@ -59,6 +59,7 @@ function initMap() { //normaly the call back function
   bounds = new google.maps.LatLngBounds();
   infoWindow = new google.maps.InfoWindow;
   currentInfoWindow = infoWindow;
+  let getNextPage;
 
   const map = new google.maps.Map(document.getElementById("map"), {
     center: userLocation,
@@ -72,12 +73,20 @@ function initMap() { //normaly the call back function
   service.nearbySearch( // Perform a nearby search using google Places Library
     {
       location: userLocation,
-      radius: 500,
+      radius: 5000,
       type: "restaurant"
     },
     (results, status, pagination) => {
       if (status !== "OK" || !results) return;
-
+      console.log("pagination", pagination);
+      console.log(pagination.hasNextPage);
+      addPlaces(results, map);
+      if (pagination.hasNextPage) {
+        getNextPage = () => {
+          // Note: nextPage will call the same handler function as the initial call
+          pagination.nextPage();
+        };
+      }
       addPlaces(results, map);
       console.log("results", results);
     }
@@ -86,7 +95,6 @@ function initMap() { //normaly the call back function
 }
 
 function addPlaces(places, map) {   // add markers to map, listeners for clicks
-  const infowindow = new google.maps.InfoWindow();
   for (const place of places) {
     if (place.geometry && place.geometry.location) {
       const image = {
@@ -127,13 +135,13 @@ function placeDetails(place, map) { // getDetails from google library
     carousel(placeResult);
     reviewtextblock = "";
     for (var x = 0; x < 5; x++) {
-      console.log("placeResult.reviews", placeResult.reviews[x].text);
+      //console.log("placeResult.reviews", placeResult.reviews[x].text);
       reviewtextblock = reviewtextblock + " " + placeResult.reviews[x].text;
     }
-    console.log(reviewtextblock.length, "reviews block before strip", reviewtextblock);
+    //console.log(reviewtextblock.length, "reviews block before strip", reviewtextblock);
     reviewtextblock = reviewtextblock.replace(/[0-9]/g, '') // remove any numbers
     reviewtextblock = reviewtextblock.split('.').join(""); // remove periods.
-    console.log(reviewtextblock.length, "review block stripped", reviewtextblock);
+    //console.log(reviewtextblock.length, "review block stripped", reviewtextblock);
     wordCloud(reviewtextblock);   // call word cloud api
   });
 }
@@ -184,13 +192,13 @@ function carousel(placeResult) {
       carouselItemContainer.classList.add('carousel-item');
       carouselItemContainer.id = i;
       carouselItemContainer.href = ("#" + i);
-      console.log("carouselItemContainer", carouselItemContainer);
+  //    console.log("carouselItemContainer", carouselItemContainer);
       var carouselItemImage = document.createElement("img");
       carouselItemImage.src = placeResult.photos[i].getUrl({'maxWidth': 250, 'maxHeight': 250});
-      console.log("carouselItemImage", carouselItemImage);
+   //   console.log("carouselItemImage", carouselItemImage);
       carouselItemContainer.append(carouselItemImage);
       carousel.append(carouselItemContainer);
-      console.log("carousel", carousel);
+     // console.log("carousel", carousel);
   }
   M.Carousel.init(carousel, {});
 
