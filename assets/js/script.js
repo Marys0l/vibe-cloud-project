@@ -189,8 +189,8 @@ function wordCloud() { // word cloud api call
         scale: 1,
         width: 640,
         height: 640,
-        colors: ["#d71b3b","#031163", "#05716c", "#1e2761", "#8a307f","#b85042","#500472","#fe3a9e" ],
-        font: "Trebuchet MS",
+        colors: ["#d71b3b","#031163","#05716c","#1e2761","#8a307f","#b85042","#500472","#fe3a9e"],
+        font: ["Montserrat"],
         use_stopwords: true,
         language: "en",
         uppercase: false
