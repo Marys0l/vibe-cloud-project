@@ -45,6 +45,10 @@ header h1 {
  * TOP PANEL
  */
 
+/* add space above search input row */
+#search-input-row {
+  margin-top: 20px;
+}
 /* style search box */
 #zip-code-text {
   background-color: #fafafa;
