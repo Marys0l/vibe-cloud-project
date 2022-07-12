@@ -7,6 +7,7 @@ var reviewtextblock;
 let infoWindow;
 let currentInfoWindow;
 let literal;
+let bounds;
 var time;
 let service;
 var geocoder;
@@ -104,7 +105,7 @@ function addPlaces(places, map) {   // add markers to map, listeners for clicks
       });
 
       marker.addListener("click", () => {
-        literal.extend(place.geometry.location);
+        bounds.extend(place.geometry.location);
         showDetails(place, marker);
         //console.log("clicked marker", place);
         //console.time();
