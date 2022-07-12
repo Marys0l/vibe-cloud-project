@@ -6,7 +6,7 @@ var userLocation;
 var reviewtextblock;
 let infoWindow;
 let currentInfoWindow;
-let bounds;
+let literal;
 var time;
 let service;
 var geocoder;
@@ -56,7 +56,7 @@ function geocodeZip(zipCodeInput, map) {
 }
 
 function initMap() { //normaly the call back function 
-  bounds = new google.maps.LatLngBounds();
+ literal = new google.maps.LatLngLieral();
   infoWindow = new google.maps.InfoWindow;
   currentInfoWindow = infoWindow;
 
@@ -66,7 +66,7 @@ function initMap() { //normaly the call back function
     mapId: "8d193001f940fde3",
     mapTypeControl: false,
   });
-  bounds.extend(userLocation);
+  literal.extend(userLocation);
   service = new google.maps.places.PlacesService(map);
 
   service.nearbySearch( // Perform a nearby search using google Places Library
@@ -104,7 +104,7 @@ function addPlaces(places, map) {   // add markers to map, listeners for clicks
       });
 
       marker.addListener("click", () => {
-        bounds.extend(place.geometry.location);
+        literal.extend(place.geometry.location);
         showDetails(place, marker);
         //console.log("clicked marker", place);
         //console.time();
