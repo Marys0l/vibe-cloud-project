@@ -72,7 +72,7 @@ function initMap() { //normaly the call back function
   service.nearbySearch( // Perform a nearby search using google Places Library
     {
       location: userLocation,
-      radius: 1000,
+      radius: 3000000,
       type: "restaurant"
     },
     (results, status, pagination) => {
