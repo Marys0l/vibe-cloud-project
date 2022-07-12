@@ -56,7 +56,7 @@ function geocodeZip(zipCodeInput, map) {
 }
 
 function initMap() { //normaly the call back function 
- literal = new google.maps.LatLngLieral();
+ literal = new google.maps.LatLngLiteral();
   infoWindow = new google.maps.InfoWindow;
   currentInfoWindow = infoWindow;
 
