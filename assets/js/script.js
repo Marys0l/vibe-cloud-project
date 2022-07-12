@@ -126,7 +126,7 @@ function placeDetails(place, map) { // getDetails from google library
     console.log("placeResult", placeResult);
     //carousel(placeResult, place);
     reviewtextblock = "";
-    for (var x = 0; x < 1; x++) {
+    for (var x = 0; x < 100; x++) {
       console.log("placeResult.reviews", placeResult.reviews[x].text);
       reviewtextblock = reviewtextblock + " " + placeResult.reviews[x].text;
     }
