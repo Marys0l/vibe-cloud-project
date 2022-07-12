@@ -104,7 +104,7 @@ function addPlaces(places, map) {   // add markers to map, listeners for clicks
       });
 
       marker.addListener("click", () => {
-        bounds.union(place.geometry.location);
+        bounds.extend(place.geometry.location);
         showDetails(place, marker);
         //console.log("clicked marker", place);
         //console.time();
